@@ -22,12 +22,14 @@ import stability_sdk.interfaces.gooseai.generation.generation_pb2 as generation
 
 # Create your views here.
 def stable(request):
+    print('working')
     response = None
     stability_api = client.StabilityInference(
     key=os.environ['STABILITY_KEY'], 
     verbose=True,
     )
     if(stability_api is not None and request.method == 'POST'):
+        print('working')
         user_input = request.POST.get('user_input')
         answers = stability_api.generate(
         prompt=user_input,

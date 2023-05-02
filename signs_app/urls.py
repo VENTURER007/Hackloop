@@ -2,6 +2,6 @@ from . import views
 from django.urls import path
 
 urlpatterns = [
-    path("",views.signs)
+    path("",views.animation_view)
     ]
 
