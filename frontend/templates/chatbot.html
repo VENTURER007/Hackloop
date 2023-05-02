@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" style="
+width: 100%;
+height: 100%;"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        body {
+  max-width: 320px;
+  margin: auto;
+  background: linear-gradient(178.6deg, rgb(20, 36, 50) 11.8%, rgb(124, 143, 161) 83.8%);
+}
+.card {
+  background-image: linear-gradient(to right top, #00f4be, #00c1cb, #008bc5, #0054a3, #021d67);
+  border-radius: 22px;
+  transition: all .3s;
+}
+.card:hover {
+  box-shadow: 0 0 30px 1px rgba(137, 196, 244, .3);
+}
+.card .card2 {
+  border-radius: 0;
+  transition: all .2s;
+}
+.card .card2:hover {
+  transform: scale(0.98);
+  border-radius: 20px;
+}
+.card .card2 .form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  gap: 10px;
+  padding: 0.4rem 2rem;
+  background-color: #171717;
+  border-radius: 20px;
+}
+.card .card2 .form #heading,
+.card .card2 .form i {
+  color: #77EED4;
+}
+.card .card2 .form #heading {
+  text-align: center;
+  margin: 2rem;
+  font-size: 1.75rem;
+}
+.card .card2 .form .field,
+.card .card2 .form .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  border-radius: 25px;
+  outline: none;
+}
+.card .card2 .form .field {
+  padding: 0.6em;
+  border: none;
+  color: white;
+  background-color: #171717;
+  box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+}
+.card .card2 .form .field .input-field {
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #0fffc8;
+}
+.card .card2 .form .btn .button,
+.card .card2 .form .button-password {
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  transition: .4s ease-in-out;
+  background-image: linear-gradient(to right top, #00f4be, #00c1cb, #008bc5, #0054a3, #021d67);
+  color: #000;
+  word-break: break-all;
+  cursor: pointer;
+}
+.card .card2 .form .btn .button {
+  padding: 0.5rem 2.15rem;
+}
+.card .card2 .form .btn .button:hover {
+  background-image: linear-gradient(163deg, #00f4be 0%, #0054a3 100%);
+  color: #fff;
+}
+.card .card2 .form .button-password {
+  margin-bottom: 3em;
+  padding: 0.5em;
+}
+.card .card2 .form .button-password:hover {
+  background-image: linear-gradient(163deg, #a00000fa 0%, #d10050 100%);
+  color: #fff;
+}
+.card .card2 .form #error {
+  color: red;
+  padding: 1rem;
+}
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card2">
+          <form method="post" class="form" >
+            {%  csrf_token %}
+            <h2 id="heading">Chat</h2>
+            <div class="field">
+              <i class="fa-solid fa-user"></i>
+              <input type="text" name="user_input" class="input-field"  placeholder="Type something..." autocomplete="off">
+            </div>
+            <div class="btn">
+              <button type="submit" class="button">Send</button>
+     
+            </div>
+            
+            <div id="error"></div>
+          </form>
+        </div>
+      </div>
+
+      
+      <div class="card">
+        <div class="card2">
+          <div class="form">
+            <h2 id="heading">Answer</h2>
+
+            <div class="field">
+                <div>
+                  {{ response|safe }}
+                </div>
+                
+              </div>
+            
+            
+            
+            <div id="error"></div>
+            </div>
+        </div>
+      </div>
+
+    </body>
+
+</html>
